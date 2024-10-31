@@ -1,11 +1,7 @@
 import React from "react";
 
-function Button({ id, translationRef, handleSubmit, value }) {
-  return (
-    <button onClick={(e) => handleSubmit(id, translationRef, value)}>
-      Submit
-    </button>
-  );
+function Button({ handleSubmit, id, value }) {
+  return <button onClick={() => handleSubmit(id, value)}>Submit</button>;
 }
 
 export default Button;
