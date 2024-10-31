@@ -1,4 +1,4 @@
-const mysql = require(`mysql`);
+const mysql = require(`mysql2`);
 require("dotenv").config();
 
 // Creates the database connection variable
@@ -8,13 +8,16 @@ require("dotenv").config();
 var pool = mysql.createPool({
   // Maximum 10 connections at the same time
   connectionLimit: 10,
-  host: "mydb.tamk.fi",
-  user: process.env.user,
-  password: process.env.password,
-  database: process.env.database,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  // user: process.env.user,
+  user: process.env.DB_USER,
+  // password: process.env.password,
+  password: process.env.DB_PW,
+  // database: process.env.database,
+  database: process.env.DB_DB,
 });
 
-/*
 // Outputs notification when a connection is acquired from the connection pool
 // FOR TESTING
 pool.on("acquire", function (connection) {
@@ -28,7 +31,6 @@ pool.on("release", function (connection) {
   console.log("---");
   console.log("Connection %d released", connection.threadId);
 });
-*/
 
 let connectionFunctions = {
   // 1. GETS all resources from the database table

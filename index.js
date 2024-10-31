@@ -52,6 +52,8 @@ function main() {
   });
 
   // 2. GETS a single resource from the database table
+  // :id() injects a variable named id into req.params.id
+  // It's value is whatever is :id()'s argument
   app.get(`/animal/:id([0-9]+)`, (req, res) => {
     let id = req.params.id;
     connection.getById(id, (data) => {
