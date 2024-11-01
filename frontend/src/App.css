@@ -2,3 +2,14 @@
   text-align: center;
   background-color: aqua;
 }
+
+body {
+  background-color: aqua;
+}
+
+button,
+div,
+h1,
+input {
+  font-family: "DynaPuff";
+}

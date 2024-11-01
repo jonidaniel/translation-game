@@ -17,7 +17,7 @@ function App() {
     } else {
       let animal = translations.find((item) => item.id === id);
       console.log(`${animal.eng} != ${value}, incorrect! `);
-      postGuess(value);
+      if (value) postGuess(value);
     }
   }
 
@@ -25,12 +25,14 @@ function App() {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ eng: "", fin: guess }),
+      body: JSON.stringify({ fin: guess }),
     };
 
-    fetch("http://localhost:8080/guess", requestOptions).catch((err) =>
-      console.log(err)
-    );
+    try {
+      await fetch("http://localhost:8080/guess", requestOptions);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const fetchTranslations = async () => {
