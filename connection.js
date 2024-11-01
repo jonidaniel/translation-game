@@ -1,39 +1,31 @@
 const mysql = require(`mysql2`);
 require("dotenv").config();
 
-// Creates the database connection variable
-// So called 'configuration object'
-
-// Variables' values are stored Heroku
+// Create database connection variable, i.e. configuration object
 var pool = mysql.createPool({
-  // Maximum 10 connections at the same time
+  // Maximum 10 connections at a time
   connectionLimit: 10,
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
-  // user: process.env.user,
   user: process.env.DB_USER,
-  // password: process.env.password,
   password: process.env.DB_PW,
-  // database: process.env.database,
   database: process.env.DB_DB,
 });
 
-// Outputs notification when a connection is acquired from the connection pool
-// FOR TESTING
+// Output notification when connection is acquired from connection pool (for testing)
 pool.on("acquire", function (connection) {
   console.log("---");
   console.log("Connection %d acquired", connection.threadId);
 });
 
-// Outputs notification when a connection is released back to the connection pool
-// FOR TESTING
+// Output notification when connection is released back to connection pool (for testing)
 pool.on("release", function (connection) {
   console.log("---");
   console.log("Connection %d released", connection.threadId);
 });
 
 let connectionFunctions = {
-  // 1. GETS all resources from the database table
+  // 1. GET all resources from database table
   getAll: (callbackFn) => {
     pool.query(`SELECT * FROM animal`, (error, results) => {
       if (error) {
@@ -43,14 +35,14 @@ let connectionFunctions = {
       }
     });
   },
-  // 2. GETS a single resource from the database table
+  // 2. GET single resource from database table
   getById: (id, callbackFn) => {
     pool.query(`SELECT * FROM animal WHERE id = ${id}`, (error, results) => {
       if (error) {
         callbackFn(error);
       } else {
-        // Looks for the animal with the right id,
-        // i.e. makes sure there is an animal with the desired id
+        // Look for animal with right id,
+        // i.e. make sure there is animal with desired id
         let result = results.find((animal) => animal.id == id);
         if (result) {
           callbackFn(result);
@@ -60,10 +52,10 @@ let connectionFunctions = {
       }
     });
   },
-  // 3. POSTS a single resource to the database table
+  // 3. POST single resource to database table
   post: (eng, fin, callbackFn) => {
     pool.query(
-      `INSERT INTO animal (eng, fin) VALUES ('${eng}', '${fin}')`,
+      `INSERT INTO guess (eng, fin) VALUES ('${eng}', '${fin}')`,
       (error) => {
         if (error) {
           callbackFn(error);
@@ -73,7 +65,7 @@ let connectionFunctions = {
       }
     );
   },
-  // 4. DELETES a single resource from the database table
+  // 4. DELETE single resource from database table
   deleteByID: (id, callbackFn) => {
     pool.query(`DELETE FROM animal WHERE id = ${id}`, (error) => {
       if (error) {
@@ -83,8 +75,8 @@ let connectionFunctions = {
       }
     });
   },
-  // Ends the connection to the database
-  // Waits for all queries to finish before ending the connection
+  // End connection to database
+  // Waits for all queries to finish before ending connection
   end: () => {
     pool.end();
   },

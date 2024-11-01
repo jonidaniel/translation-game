@@ -13,11 +13,25 @@ function App() {
     if (correct) {
       console.log(`${correct.eng} = ${correct.fin}, correct! `);
       setIndicator(id);
+      postGuess(correct.fin);
     } else {
       let animal = translations.find((item) => item.id === id);
       console.log(`${animal.eng} != ${value}, incorrect! `);
+      postGuess(value);
     }
   }
+
+  const postGuess = async (guess) => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ eng: "", fin: guess }),
+    };
+
+    fetch("http://localhost:8080/guess", requestOptions).catch((err) =>
+      console.log(err)
+    );
+  };
 
   const fetchTranslations = async () => {
     try {
