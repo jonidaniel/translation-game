@@ -1,0 +1,24 @@
+.Header {
+  text-align: center;
+  background-color: aqua;
+}
+
+body {
+  background-color: aqua;
+}
+
+div,
+input,
+button {
+  font-family: "DynaPuff";
+}
+
+h1,
+p {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+h1 {
+  word-wrap: break-word;
+}

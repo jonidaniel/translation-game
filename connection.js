@@ -1,7 +1,7 @@
 const mysql = require(`mysql2`);
 require("dotenv").config();
 
-// Create database connection variable, i.e. configuration object
+// Create database connection variable (here: connection pool), i.e. configuration object
 var pool = mysql.createPool({
   // Maximum 10 connections at a time
   connectionLimit: 10,
@@ -13,13 +13,14 @@ var pool = mysql.createPool({
 });
 
 // Output notification when connection is acquired from connection pool (for testing)
-pool.on("acquire", function (connection) {
+pool.on("acquire", (connection) => {
+  // FUNCTION (CONNECTION) JA => POIS!!!!!!!!!!!!!!!!!!!!!!!!!!
   console.log("---");
   console.log("Connection %d acquired", connection.threadId);
 });
 
 // Output notification when connection is released back to connection pool (for testing)
-pool.on("release", function (connection) {
+pool.on("release", (connection) => {
   console.log("---");
   console.log("Connection %d released", connection.threadId);
 });
