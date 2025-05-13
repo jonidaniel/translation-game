@@ -1,8 +1,10 @@
 # Translation Game
 
-- Frontend and backend code for Translation Game
-  - Made with React and Node.js
-  - The backend is connected to MySQL database
+- Full stack translation game
+  - You're prompted for translations for words
+  - Correct answers earn you points
+  - Choose between English to Finnish and Finnish to English
+- React interface requests a web server to fetch/save translations from/into a MySQL database
 
 ## Status & Usage
 
