@@ -14,7 +14,7 @@
 
 ## Screenshots
 
-![](screenshots/.png?raw=true)
+![](screenshots/screenshot.png?raw=true)
 
 ## Technologies & Tools
 
