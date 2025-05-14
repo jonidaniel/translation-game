@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Translations from "./Translations";
-import Translation from "./Translation";
+// import Translation from "./Translation";
 import Footer from "./Footer";
 import "../style-sheets/Game.css";
 
