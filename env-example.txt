@@ -1,0 +1,7 @@
+Template for environment variables
+
+DB_HOST = <database-host-or-endpoint>
+DB_PORT = <database-connection-port>
+DB_USER = <database-user>
+DB_PW = <database-password>
+DB_DB = <database-name>

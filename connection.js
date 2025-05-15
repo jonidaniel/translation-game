@@ -66,47 +66,6 @@ let connectionFunctions = {
       }
     );
   },
-  // post: (callbackFn) => {
-  //   pool.query(
-  //     `CREATE TABLE animal (
-  //       id int NOT NULL AUTO_INCREMENT,
-  //       eng VARCHAR(255) NOT NULL,
-  //       fin VARCHAR(255) NOT NULL,
-  //       PRIMARY KEY (id)
-  //     );
-  //     INSERT INTO animal (eng, fin)
-  //     VALUES ("Bear", "Karhu"),
-  //       ("Eagle", "Kotka"),
-  //       ("Wolf", "Susi"),
-  //       ("Snake", "Käärme"),
-  //       ("Dog", "Koira"),
-  //       ("Cat", "Kissa"),
-  //       ("Pig", "Sika"),
-  //       ("Fly", "Kärpänen"),
-  //       ("Fish", "Kala"),
-  //       ("Shark", "Hai"),
-  //       ("Mouse", "Hiiri"),
-  //       ("Rat", "Rotta"),
-  //       ("Bee", "Mehiläinen"),
-  //       ("Wasp", "Ampiainen"),
-  //       ("Deer", "Peura"),
-  //       ("Monkey", "Apina"),
-  //       ("Rabbit", "Jänis"),
-  //       ("Fox", "Kettu"),
-  //       ("Cow", "Lehmä"),
-  //       ("Squirrel", "Orava"),
-  //       ("Goose", "Hanhi"),
-  //       ("Duck", "Sorsa")
-  //       ("Bat", "Lepakko");`,
-  //     (error) => {
-  //       if (error) {
-  //         callbackFn(error);
-  //       } else {
-  //         callbackFn(false);
-  //       }
-  //     }
-  //   );
-  // },
   // 4. DELETE single resource from database table
   deleteByID: (id, callbackFn) => {
     pool.query(`DELETE FROM animal WHERE id = ${id}`, (error) => {

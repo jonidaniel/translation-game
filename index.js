@@ -7,7 +7,7 @@ Author: Joni Mäkinen
 
 const express = require("express");
 const server = express();
-const cors = require("cors"); /// oli var!!!!!!!!!!!!!!!!!!!!!!!
+const cors = require("cors");
 const connection = require("./connection.js");
 
 const port = 8080;
